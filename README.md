@@ -2,7 +2,7 @@
 A simple clipboard tool:
 ```
 $ clipboard --help
-Usage: clipboard
+Usage: clipboard [-f|--force] [-h|--help]
 
 EXAMPLES
 

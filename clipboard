@@ -5,7 +5,7 @@ PREFERRED_TARGETS="text/plain image/png STRING"
 
 if [[ $@ =~ -h|--help ]]; then
   cat<<EOF
-Usage: clipboard
+Usage: clipboard [-f|--force] [-h|--help]
 
 EXAMPLES
 
