@@ -32,6 +32,16 @@ sudo pacman -S xclip
 
 
 # Installation
+Put [clipboard](clipboard) on your `PATH`, e.g.
+```
+wget \
+  https://raw.githubusercontent.com/felixhummel/clipboard/master/clipboard \
+  -O ~/.local/bin/clipboard
+chmod +x ~/.local/bin/clipboard
+```
+
+
+# Development
 Clone this and put [clipboard](clipboard) on your `PATH`, e.g.
 ```
 git clone https://github.com/felixhummel/clipboard.git
