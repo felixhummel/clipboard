@@ -55,7 +55,7 @@ if [[ -t 0 ]]; then  # stdin is a TTY
     fi
   done
 else
-  target=STRING
+  target=UTF8_STRING
   t=$(mktemp)
   cp /dev/stdin $t
   mime=$(file --brief --mime-type $t)
