@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-PREFERRED_TARGETS="text/plain image/png UTF8_STRING STRING"
+PREFERRED_TARGETS="UTF8_STRING image/png"
 
 if [[ $@ =~ -h|--help ]]; then
   cat<<EOF
@@ -23,25 +23,21 @@ fi
 
 force=0
 
-handle_target() {
+do_output() {
   target=$1
-  case $target in
-    'text/plain')
-      # all good :)
-      ;;
-    'image/png')
-      # don't print to TTY
-      if [[ -t 1 && $force != 1 ]]; then
-        cat <<EOF >&2
+  if [[ $target == 'image/png' ]]; then
+    # don't print to TTY
+    if [[ -t 1 && $force != 1 ]]; then
+      cat <<EOF >&2
 Will not print image. Your options:
 
-  $0 --force
-  $0 > foo.png
+$0 --force
+$0 > foo.png
 EOF
-        exit 1
-      fi
-    esac
-    exec xclip -selection clipboard -out -target $target
+      exit 1
+    fi
+  fi
+  exec xclip -selection clipboard -out -target $target
 }
 
 if [[ -t 0 ]]; then  # stdin is a TTY
@@ -50,7 +46,7 @@ if [[ -t 0 ]]; then  # stdin is a TTY
   # if there is no text, then check if it's an image
   for target in $PREFERRED_TARGETS; do
     if [[ $targets =~ $target ]]; then
-      handle_target $target
+      do_output $target
       exit
     fi
   done
