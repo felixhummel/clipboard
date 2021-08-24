@@ -49,3 +49,10 @@ cd clipboard
 ln -s $PWD/clipboard ~/.local/bin/clipboard
 hash clipboard
 ```
+
+
+# Test
+```
+$ echo 'Möhren sind lecker' | clipboard && clipboard 
+Möhren sind lecker
+```
