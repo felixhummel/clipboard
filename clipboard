@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
 
+# https://github.com/felixhummel/clipboard
+# Copyright Felix Hummel
+# License: MIT
+
 PREFERRED_TARGETS="UTF8_STRING image/png"
 
 if [[ $@ =~ -h|--help ]]; then
